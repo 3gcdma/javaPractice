@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Solution5 {
@@ -34,7 +35,15 @@ public class Solution5 {
 			union(f, s);
 		}
 		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		for(int i = 1; i <= N; i++) {
+			if(!arr.contains(i)) {
+				arr.add(i);
+			}
+		}
+		
 		System.out.println(Answer);
+		System.out.println(arr.size());
 	}
 
 	private void union(int f, int s) {
