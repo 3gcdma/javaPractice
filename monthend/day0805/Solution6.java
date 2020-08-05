@@ -11,6 +11,7 @@ public class Solution6 {
 	private int[][] map;
 	private int N;
 	private boolean[][] checked;
+	private int cnt;
 	Stack<Integer> Answer = new Stack<Integer>();
 	private int total;
 	private int[] dx = {0,0,-1,1};
@@ -39,7 +40,15 @@ public class Solution6 {
 		for(int i = 0; i < N; i++) {
 			for(int j = 0; j < N; j++) {
 				if(map[i][j] == 1 && (!checked[i][j])) {
-					BFS(i, j);
+					//BFS(i, j);
+					
+					cnt = 0;
+					checked[i][j] = true;
+					cnt++;
+					DFS(i, j);
+					Answer.push(cnt);
+
+					
 					total++;
 				} 
 			}
@@ -83,6 +92,21 @@ public class Solution6 {
 		}
 		
 		Answer.push(count);
+	}
+	
+	private void DFS(int y, int x) {
+		int tmpx;
+		int tmpy;
+		for(int i = 0; i < 4; i++) {
+			tmpy = y + dy[i];
+			tmpx = x + dx[i];
+			if(tmpy >= 0 && tmpx >= 0 && tmpy < N && tmpx < N && map[tmpy][tmpx] == 1 && (!checked[tmpy][tmpx])) {
+				checked[tmpy][tmpx] = true;
+				cnt++;
+				DFS(tmpy, tmpx);
+
+			}
+		}
 	}
 	
 	
