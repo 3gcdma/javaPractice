@@ -1,9 +1,6 @@
 ﻿import java.util.List;
 import java.util.Scanner;
 
-import com.ssafy.ws.step06.Book;
-import com.ssafy.ws.step06.Megazine;
-
 public class ProductTest {
 	
 	private ProductMgrImpl mgr = ProductMgrImpl.getInstance();
