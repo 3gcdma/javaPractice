@@ -1,5 +1,3 @@
-package com.ssafy.day14;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 

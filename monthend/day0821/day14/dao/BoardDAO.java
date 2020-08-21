@@ -1,5 +1,3 @@
-package com.ssafy.day14.dao;
-
 import java.util.List;
 
 import com.ssafy.day14.vo.Board;

@@ -1,5 +1,3 @@
-package com.ssafy.day14.vo;
-
 public class Board {
 	private int no;
 	private String title;
