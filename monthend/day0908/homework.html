@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        H1{
+            color: orange;
+            font-size: 50px;
+            text-shadow: 3px 3px black;
+        }
+        hr{
+            border: 1px solid orange;
+        }
+        form{
+            display: table;
+            /* vertical-align: middle; */
+            margin: 0 auto;
+        }
+        table{
+            text-align: right;
+        }
+        legend{
+            color: rgb(31, 150, 60);
+            font-weight: bold;
+        }
+        fieldset{
+            margin: 10px;
+            padding: 10px 10px;
+        }
+        input.textbox{
+            border: 2px solid red;
+        }
+        select{
+            width: -webkit-fill-available;
+        }
+        button{
+            /* margin-left: 10px; */
+            width: 130px;
+        }
+    </style>
+
+</head>
+<body>
+    <H1 align="center">Become a Member</H1>
+    <hr>
+    <div >
+        <form>
+            <fieldset>
+                <legend >Registration Information</legend>
+                <table align="center">
+                    <tr>
+                        <td >E-mail : </td>
+                        <td><input type="email" class="textbox" ></td>
+                    </tr>
+                    <tr>
+                        <td >Password :</td>
+                        <td><input type="password" class="textbox"  min="6" placeholder="At least 6 letters or numbers"></td>
+                    </tr>
+                    <tr>
+                        <td >Verify Password :</td>
+                        <td><input type="password" class="textbox" ></td>
+                    </tr>
+                </table>
+            </fieldset>
+                
+            <fieldset>
+                <legend >Member Information</legend>
+                <table align="center">
+                    <tr>
+                        <td >First Name : </td>
+                        <td><input type="text" class="textbox" ></td>
+                    </tr>
+                    <tr>
+                        <td >Last Name : </td>
+                        <td><input type="text" class="textbox" ></td>
+                    </tr>
+                    <tr>
+                        <td >Address : </td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td >City : </td>
+                        <td><input type="text" class="textbox" ></td>
+                    </tr>
+                    <tr>
+                        <td >State : </td>
+                        <td><input type="text" class="textbox" placeholder="2-character code"></td>
+                    </tr>
+                    <tr>
+                        <td >ZIP Code : </td>
+                        <td><input type="number" class="textbox" placeholder="5 or 9 digits"></td>
+                    </tr>
+                    <tr>
+                        <td >Phone Number : </td>
+                        <td><input type="tel" placeholder="999-999-9999"></td>
+                    </tr>
+                </table>
+            </fieldset>
+        
+            
+        
+            <fieldset>
+                <legend >Membership Information</legend>
+                <table align="center">
+                    <tr>
+                        <td >Membership Type : </td>
+                        <td>
+                            <select name="membership">
+                                <option value="Junior" selected = "selected">Junior</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Gold">Gold</option>
+                                <option value="VIP">VIP</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >Stating Date : </td>
+                        <td><input type="date" class="textbox" ></td>
+                    </tr>
+                    <tr>
+                        <td >Address : </td>
+                        <td>
+                            <input type="number" style="width: -webkit-fill-available;" name="Tickets" min="1" max="10" value="2">
+                        </td>
+                    </tr>
+                    </tr>
+                </table>
+            </fieldset>
+            
+
+            <fieldset>
+                <legend >Submit Your Membership</legend>
+                <table class = "buttontable">
+                    <tr>
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                        <td><button type="submit">Submit</button></td>
+                        <td><button type="reset">Reset Fields</button></td>
+                    </tr>
+                </table>
+            </fieldset>
+            
+        </form>
+    </div>
+    <hr>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            margin: 30px auto;
+            width: 570px;
+        }
+        form > div{
+            margin: 10px;
+        }
+
+        label{
+            display: inline-block;
+            width: 140px;
+        }
+        label.start{
+            text-align: right;
+        }
+        .label--inline{
+            display: inline;
+        }
+        .wt100{
+            width: 100px;
+        }
+        .wt240{
+            width: 240px;
+        }
+        .btn--gruop{
+            text-align: right;
+            padding-right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginform" action="#">
+        <div>
+            <label for="inputname" class="start">이름</label>
+            <input type="text" id="inputname" class="wt100">
+        </div>
+        <div>
+            <label for="inputid" class="start">아이디</label>
+            <input type="text" id="inputid" class="wt100">
+        </div>
+        <div>
+            <label for="inputpw" class="start">비밀번호</label>
+            <input type="password" id="inputpw" class="wt100">
+            <label for="inputpwRe" class="label--inline">비밀번호 확인</label>
+            <input type="password" id="inputpwRe" >
+        </div>
+        <div>
+            <label class="start">경력여부</label>
+            <input type="radio" name="curreea" id="new"><label for="new" class="label--inline">신입</label>
+            <input type="radio" name="curreea" id="old"><label for="old" class="label--inline">경력</label>
+            <select id="years" disabled="disabled">
+                <option selected="selected">선택</option>
+                <option>3개월미만</option>
+                <option>3개월이상</option>
+                <option>6개월이상</option>
+                <option>1년이상</option>
+                <option>2년이상</option>
+                <option>3년이상</option>
+                <option>5년이상</option>
+                <option>10년이상</option>
+                <option>20년이상</option>
+            </select>
+        </div>
+        <div>
+            <label class="start">이메일</label>
+            <input type="email" id="inputemail" class="wt240">
+            <input type="checkbox" name="curreea" id="check"> <label for="check" class="label--inline">메일수신</label>
+        </div>
+        <div class="btn--gruop">
+            <button>확인</button>
+        </div>
+        
+
+    </form>
+
+    <script>
+        let login = document.getElementById("loginform");
+
+        login.addEventListener("submit", function (e) {
+            let tmp = document.getElementById("inputname");
+            if(tmp.value.length == 0){
+                alert("이름을 입력하세요")
+                e.preventDefault();
+                return false;
+            }
+
+            tmp = document.getElementById("inputid");
+            if(tmp.value.length == 0){
+                alert("ID을 입력하세요")
+                e.preventDefault();
+                return false;
+            }
+
+            tmp = document.getElementById("inputpw");
+            if(tmp.value.length == 0){
+                alert("비밀번호를 입력하세요")
+                e.preventDefault();
+                return false;
+            }
+
+            tmp = document.getElementById("inputpwRe");
+            if(tmp.value.length == 0){
+                alert("비밀번호 확인을 입력하세요")
+                e.preventDefault();
+                return false;
+            }
+
+            let pw = document.getElementById("inputpw");
+            if(pw.value.length != tmp.value.length){
+                alert("비밀번호가 일치하지 않습니다.");
+                e.preventDefault();
+                return false;
+            }
+
+
+            //경력 선택 및
+            tmp = document.getElementById("years");
+            let cur = document.getElementsByName("curreea");
+            let cur_value;
+            
+            for(let i = 0; i < cur.length; i++){
+                if(cur[i].checked) {
+                    cur_value = i;
+                    break;
+                }
+            }
+
+            if( cur_value == undefined){
+                alert("경력을 체크하세요")
+                e.preventDefault();
+            }
+
+            if( cur_value == 1 && tmp.value == "선택"){
+                alert("경력 체크시 경력을 선택하세요")
+                e.preventDefault();
+            }
+
+            tmp = document.getElementById("inputemail");
+            let emailchecked = document.getElementById("check");
+            if( emailchecked.checked && tmp.value.length == 0){
+                alert("이메일을 작성하세요")
+                e.preventDefault();
+            }
+
+        })
+
+        let cur = document.getElementById("old");
+        cur.addEventListener("click", function (e) {
+            let career = document.getElementById("years");
+            career.removeAttribute("disabled");
+        });
+
+        let cur1 = document.getElementById("new");
+        cur1.addEventListener("click", function (e) {
+            let career = document.getElementById("years");
+            career.setAttribute("disabled", "disabled");
+
+        });
+
+        let id = document.getElementById("inputid");
+        id.onblur = function (e) {
+            if(id.value.length < 4 || id.value.length > 8 ){
+                alert("아이디는 4글자 이상 8글자 이하로 적어주십시요")
+            }
+        };
+        
+    </script>
+</body>
+</html>
