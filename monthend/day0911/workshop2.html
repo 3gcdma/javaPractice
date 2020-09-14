@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+        }
+        div.check{
+            width: 300px;
+            height: 300px;
+            background: gray;
+
+            left:20px;
+        }
+        div.print{
+            width: 1000px;
+            height: 100px;
+            border: 5px solid orange;
+            left: 400px;
+            
+        }
+        div.select{
+            position: relative;
+            height: 50px;
+        }
+        div.data{
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 200px;
+            line-height: 50px;
+        }
+        label{
+            font-size: 30px;
+            margin-bottom: 100px;
+        }
+
+        input[type=checkbox] {
+            transform: scale(1.5);
+        }
+        h2{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="check">
+            <div class="select">
+                <input type="checkbox" id="JAVA"> <label for="JAVA">JAVA</label>
+            </div>
+            <div class="select">
+                <input type="checkbox" id="SQL"> <label for="SQL">SQL</label>
+            </div>
+            <div class="select">
+                <input type="checkbox" id="CSS"> <label for="CSS">CSS</label>
+            </div>
+            <div class="select">
+                <input type="checkbox" id="JAVASCRIPT"> <label for="JAVASCRIPT">JAVASCRIPT</label>
+            </div>
+            <div class="select">
+                <input type="checkbox" id="HTML"> <label for="HTML">HTML</label>
+            </div>
+           
+        </div>
+    
+        <div class="print">
+        </div>
+    </div>
+    <script>
+        $("#JAVA").click(function (e) {
+            if(this.checked){
+                $(".print").append(`<div class="data"><h2>${this.id}</h2><button>X</button></div>`);
+            }
+        })
+        $("#SQL").click(function (e) {
+            if(this.checked){
+                $(".print").append(`<div class="data"><h2>${this.id}</h2><button>X</button></div>`);
+            }
+        })
+        $("#CSS").click(function (e) {
+            if(this.checked){
+                $(".print").append(`<div class="data"><h2>${this.id}</h2><button>X</button></div>`);
+            }
+        })
+        $("#JAVASCRIPT").click(function (e) {
+            if(this.checked){
+                $(".print").append(`<div class="data"><h2>${this.id}</h2><button>X</button></div>`);
+            }
+        })
+        $("#HTML").click(function (e) {
+            if(this.checked){
+                $(".print").append(`<div class="data"><h2>${this.id}</h2><button>X</button></div>`);
+            }
+        })
+    </script>
+
+</body>
+</html>
