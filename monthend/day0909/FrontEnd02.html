@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="FrontEnd02.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+		<nav>
+			<a class="header_nav_home" href="#">자기소개서</a>	
+		
+			<div class="header_nav_menu">
+				<div class="header_nav_menuitem">
+					<a class="nav_link" href="#">프로필</a>
+				</div>
+				<div class="header_nav_menuitem">
+					<a class="nav_link" href="#">스킬</a>
+				</div>
+				<div class="header_nav_menuitem">
+					<a class="nav_link" href="#">프로젝트</a>
+				</div>
+				<div class="header_nav_menuitem">
+					<a class="nav_link" href="#">FAQ</a>
+				</div>
+			</div>
+		</nav>
+    </header>
+    
+
+    <div class="content">
+        <div class="content_left">
+            <div class="profile">
+                <img id="profile_img" src="coolpink.jpg" alt="">
+            </div>
+            <div>
+                <audio src="03.Butter_Fly_(Ballad_Ver.).mp3" controls="controls"></audio>
+            </div>
+        </div>
+       
+
+        <div class="content_body">
+            <form>
+                <div id="ti">Self Introuduce</div>
+              
+                <fieldset  >
+                    <legend>Information</legend>
+                    <p>
+                        <label for="UserName" >Name : </label> <input type="text" id="UserName" name="UserName" min="6"  placeholder="set Your Name" value="김상훈" readonly>
+                    </p>
+                    <p>
+                        <label for="UserEmail"> E-mail  : </label> <input type="email" name="UserEmail" id="UserEmail" value="kshwnahr@gmail.com" readonly> 
+                    </p>
+                    <p>
+                        <label for="UserAge" >Age : </label> <input type="number" value="26" id="UserAge" name="UserAge" >
+                    </p>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Project Information</legend>
+                    <p>
+                        <label for="Team"> Team name : </label><input type="text" name="Team" id="Team" value="Kims" readonly>
+                    </p>
+                    <p>
+                        <label for="Project">Project Name : </label><input type="text" name="Project" id="Project" value="Information" readonly>
+                    </p>
+                    <p>
+                        <label for="StartDate">Start Date : </label><input type="date" name="StartDate" id="AddrStartDateess" value="2020-09-09" readonly>
+                    </p>
+                    <p>
+                        <label for="EndDate">End Date : </label><input type="date" name="EndDate" id="EndDate" value="2020-09-09" readonly>
+                    </p>
+                    <p>
+                        <label for="TeamNumber">Team Number : </label><input type="number" name="TeamNumber" id="TeamNumber" placeholder="At leat more one people " value="3" readonly>
+                    </p>
+                    <p>
+                        <label for="ProjectSubject">Project subject : </label><input type="text" name="ProjectSubject" id="ProjectSubject" value="Introuduce yourself" readonly>
+                    </p>
+                    <p>
+                        <label for="PhoneNum">Phone Number : </label><input type="tel" name="PhoneNum" id="PhoneNum" placeholder="999-999-9999" value="010-8646-1337" readonly>
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Education</legend>
+                    <p>
+                        <label for="Fedu">Final education </label>
+                        <select name="Fedu" id="Fedu" style="width: 40%;">
+                            <option value="University" selected >University</option>
+                            <option value="College">College</option>
+                            <option value="highSchool">highschool</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="Graduate">Graduate Date</label>
+                        <input type="date" id="Graduate" name="Graduate" value="2020-02-14" readonly>
+                    </p>
+                    <p>
+                        <label for="School">School Name</label><input type="text" id="School" name="School" value="숭실대학교" readonly>
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Update Your SelfIntroduce</legend>
+                    <p id="submit">
+                        <button type="submit">Update</button>
+                        <button type="reset">Reset Fields</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+
+    
+</body>
+</html>
