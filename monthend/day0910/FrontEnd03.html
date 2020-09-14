@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .num{
+            background :yellow;
+            width : 100px;
+            height: 100px;
+            border-radius: 50px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <H2>대박을 기원합니다~~</H2>
+    <div class="mainframe">
+        <div class="lotto">
+            <ul class="values"></ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $(".mainframe").css({"background":"skyblue", "width" : "1200px", "height":"600px"});
+            $(".values").css({"text-align":"center", "line-height" : "600px"});
+            let i = 0;
+            var timer = setInterval(() => {
+                let html = '<li class="num">';
+                html += lotto[i];
+                html += '</li>';
+                $(".values").append(html);
+                i++;
+                if(i >= 6) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+            
+        })
+       
+        
+    </script>
+</body>
+</html>
