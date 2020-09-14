@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        button{
+            margin-top: 8px;
+            width: 40px;
+        }
+        #calc{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="calc" placeholder="0.0">
+    </div>
+    <div>
+        <div>
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn">+</button>
+        </div>
+        <div>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">-</button>
+        </div>
+        <div>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">*</button>
+        </div>
+        <div>
+            <button class="btn">0</button>
+            <button class="clear">CE</button>
+            <button class="answer">=</button>
+            <button class="btn">/</button>
+        </div>
+    </div>
+    <div>
+        <h2>결 과 이 력</h2>
+        <div class="output">
+
+        </div>
+    </div>
+
+    <script>
+        let count = 1;
+        $(".btn").click(function() {
+            let tmp = $("input[id=calc]").val();
+            $("input[id=calc]").val(tmp + $(this).text())
+        })
+        $(".clear").click(function() {
+            $("input[id=calc]").val("");
+        })
+        $(".answer").click(function() {
+            let tmp = $("input[id=calc]").val();
+            $("div.output").append("<h4>" + count++ + "."+ tmp+ "=" + eval(tmp) + "</h4>");
+            $("input[id=calc]").val("");
+        })
+        
+    </script>
+</body>
+</html>
