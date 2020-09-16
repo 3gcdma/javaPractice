@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" id="msg">
+	<div class="result">0</div>
+	<script>
+		$("#msg").on('keyup', () =>{
+			$(".result").text($("#msg").val())
+		})
+	</script>
+</body>
+</html>

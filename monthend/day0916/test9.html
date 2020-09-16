@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="result">
+		<button id="btn1">속성확인</button>
+		<button id="btn2">속성추가</button>
+	</div>
+	<div id="div1" data-cnt="10"></div>
+	<div id="div2"></div>
+	<script>
+		document.getElementById("btn1").addEventListener("click", e => {
+			document.getElementById("div2").innerText = 
+				" data-cnt : " + document.getElementById("div1").getAttribute("data-cnt") +
+				" data-name : " +document.getElementById("div1").getAttribute("data-name");
+		})
+		document.getElementById("btn2").addEventListener("click", e => {
+			document.getElementById("div1").setAttribute("data-name", "추가됨");
+		})
+	</script>
+</body>
+</html>

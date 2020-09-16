@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            margin: 10px;
+            text-align: center;
+            line-height: 300px;
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <div>
+        <button id="btn1">배경색 변경하기(#345)</button>
+        <button id="btn2">글자색 변경하기(white)</button>
+        <button id="btn3">테두리 추가하기(10px solid tomato)</button>
+        <button id="btn4">테두리 둥글게(50%)</button>
+    </div>
+    <div id="result">TEST CSS</div>
+    <script>
+        $("#btn1").on('click', function () {
+        	$("#result").css("background", "#345");
+		})
+		$("#btn2").on('click', function () {
+        	$("#result").css("color", "white");
+		})
+		$("#btn3").on('click', function () {
+        	$("#result").css("border", "10px solid tomato");
+		})
+		$("#btn4").on('click', function () {
+        	$("#result").css("border-Radius", "50%");
+		})
+
+    </script>
+</body>
+</html>
