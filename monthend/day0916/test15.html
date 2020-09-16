@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            margin: 10px;
+            text-align: center;
+            line-height: 300px;
+        }
+        .test {
+            background-color: #345;
+            color: white;
+            border: 10px solid tomato;
+            border-radius: 50%
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <div>
+        <button id="btn">class 적용</button>
+    </div>
+    <div id="result">TEST CSS</div>
+    <script>
+		document.getElementById("btn").addEventListener("click", e => {
+			let res = document.getElementById("result");
+// 			res.className = "test";
+
+			res.setAttribute("class", "test");
+			console.log(res.className);
+		})
+    </script>
+</body>
+</html>

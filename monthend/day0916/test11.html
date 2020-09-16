@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="result">
+		<button id="btn1">확인</button>
+		<button id="btn2">추가</button>
+	</div>
+	<div id="result">추가 버튼 클릭시 여기에 내용이 적용됩니다</div>
+	<script>
+		let res = document.getElementById("result")
+		document.getElementById("btn1").addEventListener("click", e => {
+			console.log(res.innerText);
+		})
+		document.getElementById("btn2").addEventListener("click", e => {
+			res.innerHTML = res.innerHTML + "<h2>추가</h2>";
+		})
+	</script>
+</body>
+</html>

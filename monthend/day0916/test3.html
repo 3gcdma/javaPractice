@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+</head>
+<body>
+	<button>Click</button>
+	<div class="result">0</div>
+	<script>
+		document.querySelector("button").addEventListener('click', () => {
+			let datas = document.getElementsByClassName("result")
+			datas[0].innerHTML = parseInt(datas[0].innerText) + 1;
+		})
+		
+	</script>
+</body>
+</html>

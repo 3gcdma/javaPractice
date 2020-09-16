@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="result">
+		<button id="btn1">속성확인</button>
+		<button id="btn2">속성추가</button>
+	</div>
+	<img id="img1" src="../images/ice_americano.jpg">
+	<div id="result"></div>
+	<script>
+		$("#btn1").on("click", e=>{
+			$("#result").text = $("#img1").attr("alt");
+		})
+		$("#btn2").on("click", e=>{
+			$("#img1").attr("alt", "아이스아메리카노");
+		})
+		document.getElementById("btn2").addEventListener("click", e => {
+			document.getElementById("img1").alt = "아이스아메리카노";
+		})
+	</script>
+</body>
+</html>

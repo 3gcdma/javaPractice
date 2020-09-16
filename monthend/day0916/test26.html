@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>지역</th>
+                    <th>좋아하는 커피</th>
+                </tr>
+            </thead>
+            <tbody id="dataTBody"></tbody>
+        </table>
+    </div>
+    <script>
+        // 화면 로딩 시 아래의 data 변수에 있는 데이터를 dataTBody에 추가하시오
+        const data = [{
+            'name': '구싸피',
+            'area': '구미',
+            'src': 'ice_americano.jpg'
+        }, {
+            'name': '김싸피',
+            'area': '대전',
+            'src': 'ice_cafelatte.jpg'
+        }];
+		data.forEach(function (item) {
+			let text = "";
+			text += "<tr>";
+			text += `<td>${item.name}</td>`;
+			text += `<td>${item.area}</td>`;
+			text += `<td><img src='../images/${item.src}'/></td>`;
+			text += "</tr>";
+			$('#dataTBody').append(text);
+		})
+    </script>
+</body>
+
+</html>
