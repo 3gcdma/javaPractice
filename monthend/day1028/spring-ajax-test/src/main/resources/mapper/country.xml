@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.test.mapper.CountryMapper">
+	<insert id="insertCountryStatus" parameterType="countryStatus">
+		insert into country_status(
+			ccode, cname, patient, rcode
+		) values (
+			#{ccode}, #{cname}, #{patient}, #{rcode}
+		)
+	</insert>
+	<delete id="deleteCountryStatus" parameterType="string">
+		delete
+		  from country_status
+		 where ccode = #{ccode}
+	</delete>
+	<select id="selectCountryStatus" resultType="countryStatus">
+		select ccode, 
+		       cname, 
+		       patient, 
+		       rcode, 
+		       (select  rname from region where rcode = a.rcode) as rname
+		  from country_status a
+		 order by ccode
+	</select>
+	<select id="selectCountryStatusByCcode" parameterType="string" resultType="countryStatus">
+		select ccode, 
+		       cname, 
+		       patient, 
+		       rcode, 
+		       (select  rname from region where rcode = a.rcode) as rname
+		  from country_status a
+		 where ccode = #{ccode}
+	</select>
+</mapper>

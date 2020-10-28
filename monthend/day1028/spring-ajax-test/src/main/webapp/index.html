@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#loginInfo {
+		text-align: right;
+	}
+	
+	#head {
+		text-align: center;
+	}
+	
+	.inputtitle {
+		display: inline-block;
+		width: 100px;
+		background: silver;
+		text-align: center;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		let root = '/test';
+		let isLogin = false;
+		let loginUser = {
+			id:''
+		};
+	</script>
+	
+	</head>
+	<body>
+	
+	<div id="loginInfo"></div>
+	<h1 id="head">국가별 확진자 현황</h1>
+	<hr>
+	<div id="countryListArea">
+		<form action="deletes">
+			<table>
+				<thead>
+					<tr>
+						<th>국가번호</th>
+						<th>국가명</th>
+						<th>확진자수</th>
+						<th>지역</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody id="listbody">
+					
+				</tbody>
+			</table>
+			<div>
+				<button>선택항목삭제</button>
+			</div>
+		</form>
+
+	</div>
+	<div id="countryRegisterArea">
+		<form id="registForm" method="post">
+			<label for="ccode" class="inputtitle">국가 코드</label>
+			<input type="text" name="ccode" id="ccode">
+			<br>
+			<label for="cname" class="inputtitle">국가명</label>
+			<input type="text" name="cname" id="cname">
+			<br>
+			<label for="patient" class="inputtitle">확진자수</label>
+			<input type="number" name="patient" id="patient">
+			<br>
+			<label for="rcode" class="inputtitle">지역</label>
+			<select id="rcode" name="rcode">
+				<option value="eu">유럽
+				<option value="na">북아메리카
+				<option value="as">아시아
+			</select>
+			<br>
+			<input type="submit" value="확진자 현황 등록">
+			<input type="reset" value="초기화">
+		</form>
+	</div>
+
+	<div id="loginArea">
+		<div id="loginMsg">
+			<h2>이미 로그인 되었습니다.</h2>		
+		</div>
+		<div id="loginFormDiv">
+			<div>
+				<label>아이디</label>
+				<input type="text" id="id">
+			</div>
+			<div>
+				<label>패스워드</label>
+				<input type="password" id="pw">
+			</div>
+			<div>
+				<button type="button" id="loginBtn">로그인</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="detailArea">
+		<label for="detail_ccode" class="inputtitle">국가 번호</label>
+		<input type="text" id="detail_ccode">
+		<br>
+		<label for="detail_cname" class="inputtitle">국가명</label>
+		<input type="text" id="detail_cname">
+		<br>
+		<label for="detail_patient" class="inputtitle">확진자수</label>
+		<input type="text" id="detail_patient">
+		<br>
+		<label for="detail_rname" class="inputtitle">지역</label>
+		<input type="text" id="detail_rname">
+	</div>
+
+
+	<div>
+		<a href="#" id="viewHomeForm">홈으로</a>
+		<a href="#" id="viewRegisterForm">국가별 확진자 등록</a>
+		<a href="#/country/list" id="viewList">목록보기</a>
+	</div>
+	<script type="text/javascript">
+
+
+		//로그인 여부에 따라서 화면의 멘트 체인지
+		if(isLogin){
+			$('#loginInfo').html(`${loginUser.id }님 로그인되었습니다. <a href="${root}/user/logout">로그아웃</a>`);
+			$('#loginMsg').show();
+			$('#loginFormDiv').hide();
+		}else{
+			$('#loginInfo').html(`<a href="${root}">로그인 해주세요.</a>`);
+			$('#loginMsg').hide();
+			$('#loginFormDiv').show();
+		}
+
+		$('#countryRegisterArea').hide();
+		$('#countryListArea').hide();
+		$('#detailArea').hide();
+
+		$('#viewHomeForm').click(function () {
+			$('#countryRegisterArea').hide();
+			$('#countryListArea').hide();
+			$('#loginArea').show();
+			$('#detailArea').hide();
+		})
+
+
+		$('#viewRegisterForm').click(function () {
+			$('#countryRegisterArea').show();
+			$('#countryListArea').hide();
+			$('#loginArea').hide();
+			$('#detailArea').hide();
+		})
+		
+
+		$('#listbody').on("click", "a", function () {
+			// console.log($(this).text());
+			$.ajax({
+				url:`${root}/country/detail.do`,
+				type: 'POST',
+				data: {
+					"ccode" : $(this).text()
+				},
+				dataType: 'json',
+				success: function(data){
+					// console.dir(data);
+					
+					$('#detail_ccode').val(data.ccode);
+					$('#detail_cname').val(data.cname);
+					$('#detail_patient').val(data.patient);
+					$('#detail_rname').val(data.rname);
+
+
+					$('#countryRegisterArea').hide();
+					$('#loginArea').hide();
+					$('#countryListArea').hide();
+					$('#detailArea').show();
+				},
+				error : function () {
+					alert("조회시 에러발생");
+				}
+			})
+		})
+
+		//목록이벤트처리
+		$('#viewList').click(function () {
+			$.ajax({
+				url:`${root}/country/list.do`,
+				dataType: 'json',
+				success: function(data){
+					// console.dir(data);
+					$('#listbody').html("");
+					$.each(data, function (i, v) {
+						// console.log(i, v);
+						$('#listbody').append(`
+							<tr>
+								<td><a href="#" class="viewDetail">${v.ccode}</a></td>
+								<td>${v.cname}</td>
+								<td>${v.patient}</td>
+								<td>${v.rname}</td>
+								<td><input type="checkbox" name="ccodes" value="${v.ccode}"></td>
+							</tr>
+						`);
+						
+					})
+					$('#countryRegisterArea').hide();
+					$('#loginArea').hide();
+					$('#detailArea').hide();
+					$('#countryListArea').show();
+				},
+				error : function () {
+					alert("조회시 에러발생");
+				}
+			})
+		})
+
+
+		//등록 이벤트 처리
+		$('#registForm').submit(function(e){
+			e.preventDefault();
+			// console.log($("#registForm").serialize());
+
+			$.ajax({
+				url:`${root}/country/regist.do`,
+				type: 'POST',
+				data: $("#registForm").serialize(),
+				dataType: 'json',
+				success: function(data){
+					// console.dir(data);
+					if(data.result == "0"){
+						alert("등록시 문제 발생")
+					}else{
+						alert("코로나 현황 정보가 등록되었습니다")
+						//폼을 데이터를 빈 값으로 변경
+						$('#registForm')[0].reset();
+					}
+				},
+				error : function () {
+					alert("등록시 문제 발생");
+				}
+			})
+
+		})
+
+		
+		$('#loginBtn').click(function(){
+			$.ajax({
+				url:`${root}/user/login.do`,
+				type: 'POST',
+				// data: `id=${'#id'}.val()&pw=${pw}.val()`,
+				data: {
+					id : $("#id").val(),
+					pw : $("#pw").val()
+					},
+				dataType: 'json',
+				success: function(data){
+					// console.dir(data);
+					if(data.result == "0"){
+						alert("id 또는 password를 확인하세요")
+					}else{
+						isLogin = true;
+						$('#viewList').trigger('click');
+					}
+				}
+			})
+		})
+
+	</script>
+</body>
+</html>
