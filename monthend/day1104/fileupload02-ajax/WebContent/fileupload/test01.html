@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<form action="test.do" method="post" enctype="multipart/form-data">
+		<input type="text" name="msg">
+		<input type="file" name="attach" multiple>
+		<button type="button">전송</button>
+	</form>
+	
+	<script type="text/javascript">
+		$("button").click(function () {
+			//alert("클릭됨");
+			/* 
+			console.dir($("input[name='attach']")[0].files[0])
+			console.dir($("input[name='attach']")[0].files[0].name)
+			console.dir($("input[name='attach']")[0].files[0].size)
+			console.dir($("input[name='attach']")[0].files[0].type)
+			 */
+			
+			let files = $("input[name='attach']")[0].files;
+			for(let i = 0; i < files.length; i++){
+				console.log(files[i].name, files[i].size, files[i].type)
+			}
+			/* 
+			$.ajax({
+				url:,
+				data:,
+				
+			})
+			 */
+				
+		});
+	</script>
+</body>
+</html>
