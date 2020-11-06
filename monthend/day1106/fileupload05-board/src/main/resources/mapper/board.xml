@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fileupload05.repository.mapper.BoardMapper">
+	<!-- 게시판 목록 데이터 조회 -->
+	<select id="selectBoard" resultType="board">
+		select 
+			no,
+			title,
+			content,
+			writer
+		from board
+		order by no desc
+	</select>
+	
+	<!-- 게시판 내용 넣기 -->
+	<insert id="insertBoard" parameterType="board" useGeneratedKeys="true" keyProperty="no">
+		insert into board(title, writer, content)
+		values( #{title},#{writer},#{content})
+	</insert>
+	
+	<insert id="insertBoardFile" parameterType="boardFile">
+		insert into board_file(no, file_path, org_name,system_name,file_size,file_type)
+		values( #{no}, #{filePath}, #{orgName},#{systemName},#{fileSize},#{fileType})
+	</insert>
+	
+	<resultMap id="boardMap" type="board">
+		<result column="no" property="no"/>
+		<collection property="fileList" column="no" select="selectBoardFileByNo"/>
+	</resultMap>
+	
+	
+	<!-- 게시판 목록 데이터 no로 조회 -->
+	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+	<!-- <select id="selectBoardByNo" parameterType="int" resultMap="boardMap"> -->
+		select 
+			*
+		from board
+		where no = ${no}
+	</select>
+	
+	<resultMap id="boardFileMap" type="boardFile">
+		<result column="file_no" property="fileNo"/>
+		<result column="no" property="no"/>
+		<result column="file_path" property="filePath"/>
+		<result column="org_name" property="orgName"/>
+		<result column="system_name" property="systemName"/>
+		<result column="file_size" property="fileSize"/>
+		<result column="file_type" property="fileType"/>
+	</resultMap>
+	
+	<!-- 게시판 파일 목록 데이터 no로 조회 -->
+	<select id="selectBoardFileByNo" parameterType="int" resultMap="boardFileMap">
+		select *
+		from board_file
+		where no = ${no}
+	</select>
+	
+	
+</mapper>
